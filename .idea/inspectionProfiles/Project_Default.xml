@@ -1,0 +1,35 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="PyPackageRequirementsInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredPackages">
+        <value>
+          <list size="22">
+            <item index="0" class="java.lang.String" itemvalue="bootstrap-admin" />
+            <item index="1" class="java.lang.String" itemvalue="django-bootstrap-form" />
+            <item index="2" class="java.lang.String" itemvalue="django-bootstrap3" />
+            <item index="3" class="java.lang.String" itemvalue="django-tables2-column-shifter" />
+            <item index="4" class="java.lang.String" itemvalue="django-bootstrap-datepicker-plus" />
+            <item index="5" class="java.lang.String" itemvalue="django-crispy-forms" />
+            <item index="6" class="java.lang.String" itemvalue="django-advanced-filters" />
+            <item index="7" class="java.lang.String" itemvalue="django-registration-bootstrap" />
+            <item index="8" class="java.lang.String" itemvalue="setuptools" />
+            <item index="9" class="java.lang.String" itemvalue="django-python3-ldap" />
+            <item index="10" class="java.lang.String" itemvalue="django-tables2" />
+            <item index="11" class="java.lang.String" itemvalue="memoize" />
+            <item index="12" class="java.lang.String" itemvalue="django" />
+            <item index="13" class="java.lang.String" itemvalue="django-auth-ldap3-ad" />
+            <item index="14" class="java.lang.String" itemvalue="django-bootstrap-select" />
+            <item index="15" class="java.lang.String" itemvalue="django-filter" />
+            <item index="16" class="java.lang.String" itemvalue="django-registration" />
+            <item index="17" class="java.lang.String" itemvalue="django-axes" />
+            <item index="18" class="java.lang.String" itemvalue="django-braces" />
+            <item index="19" class="java.lang.String" itemvalue="tablib[all]" />
+            <item index="20" class="java.lang.String" itemvalue="django-user-agents" />
+            <item index="21" class="java.lang.String" itemvalue="django-fontawesome" />
+          </list>
+        </value>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>
