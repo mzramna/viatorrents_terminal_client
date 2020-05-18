@@ -84,6 +84,7 @@ def navegar(categoria_selecionada=""):
     if categoria_selecionada == "":
         categoria_selecionada = selecionar_categoria()
     selecionado = selecionar_pagina(categoria_selecionada)
+    print(selecionado["href"])
     get_magnets(selecionado["href"])
 
 
