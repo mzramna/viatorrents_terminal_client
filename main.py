@@ -1,7 +1,7 @@
 from bs4 import BeautifulSoup
 import requests
 
-rooturl = "https://viatorrents.com/"
+rootUrl = "https://viatorrents.com/"
 
 
 def get_magnets(url):
@@ -17,7 +17,7 @@ def get_magnets(url):
 
 
 def get_categories():
-    source = requests.get(rooturl).text
+    source = requests.get(rootUrl).text
     bs = BeautifulSoup(source, "lxml")
     teste = bs.find_all("a", class_="nav-link")
     # for i in teste:
@@ -35,12 +35,17 @@ def selecionar_categoria():
     return categorias[categoria_selecionada]
 
 
-def listar_elementos_pagina(categoria, pagina=0):
-    if pagina == 0:
-        url = rooturl + categoria["href"]
+def listar_elementos_pagina(categoria, pagina=0, rooturl=rootUrl):
+    if type(categoria) == type(""):
+        if pagina == 0:
+            url = rooturl + categoria
+        else:
+            url = rooturl + categoria + str(pagina) + "/"
     else:
-        url = rooturl + categoria["href"] + str(pagina) + "/"
-    print(url)
+        if pagina == 0:
+            url = rooturl + categoria["href"]
+        else:
+            url = rooturl + categoria["href"] + str(pagina) + "/"
     source = requests.get(url).text
     bs = BeautifulSoup(source, "lxml")
     testes = bs.find_all(class_="capa_larga")
@@ -48,7 +53,6 @@ def listar_elementos_pagina(categoria, pagina=0):
     for teste in testes:
         bs = BeautifulSoup(teste.prettify(), "lxml")
         teste = bs.find_all('a')
-        print(teste)
         resultados.append(teste[0])
     return resultados
 
@@ -69,14 +73,36 @@ def selecionar_pagina(categoria):
             selecao = input("selecione o elemento: ")
 
         if selecao.isdecimal():
-            print(selecao)
-            return elementos[int(selecao)-1]
+            return elementos[int(selecao) - 1]
         if selecao == "<":
             pagina -= 1
         if selecao == ">":
             pagina += 1
 
 
-categoria_selecionada = selecionar_categoria()
-selecionado=selecionar_pagina(categoria_selecionada)
-get_magnets(selecionado["href"])
+def navegar(categoria_selecionada=""):
+    if categoria_selecionada == "":
+        categoria_selecionada = selecionar_categoria()
+    selecionado = selecionar_pagina(categoria_selecionada)
+    get_magnets(selecionado["href"])
+
+
+def busca():
+    termo_buscado = input("insira o termo a ser buscado: ")
+    termo_buscado = termo_buscado.replace(" ", "%20")
+    resultado_busca = rootUrl + termo_buscado
+    print(resultado_busca)
+    navegar(termo_buscado + "/")
+
+
+def menu_inicial():
+    print("selecione a opcao desejada")
+    print("1 - navegar pelo site")
+    print("2 - buscar um termo")
+    opcao = int(input("digite a opcao selecionada: "))
+    if opcao == 1:
+        navegar()
+    elif opcao == 2:
+        busca()
+
+menu_inicial()
